@@ -307,7 +307,7 @@ const ProductSlider = () => {
       {/* TITLE */}
       <h2
         key={`title-${imgKey}`}
-        className="product-name-animate absolute bottom-[35rem] md:bottom-[30rem] lg:bottom-[25rem] left-1/2 transform -translate-x-1/2 text-4xl md:text-5xl lg:text-6xl font-bold text-white px-6 py-3 rounded-xl  bg-gradient-to-r from-indigo-500 via-purple-200 to-pink-900 bg-clip-text text-transparent"
+        className="product-name-animate absolute bottom-[35rem] md:bottom-[30rem] lg:bottom-[25rem] left-1/2 transform -translate-x-1/2 text-3xl md:text-4xl lg:text-6xl font-bold text-white px-6 py-3 rounded-xl  bg-gradient-to-r from-indigo-500 via-purple-200 to-pink-900 bg-clip-text text-transparent"
       >
         {product.name}
       </h2>
@@ -319,9 +319,9 @@ const ProductSlider = () => {
     isImageLoaded ? "animate-slide-up" : ""
   } md:align-center lg:max-w-full lg:flex lg:justify-evenly px-5 lg:items-start lg:mt-[-11rem] lg:px-6`}
       >
-        <div className="lg:mr-[18rem]">
-          <h3 className="text-5xl mt-4">${product.price}</h3>
-          <p className="text-2xl text-gray-300 py-4 lg:py-0 lg:max-w-[32rem] lg:mt-6">
+        <div className="lg:mr-[14rem] xl:mr-[18rem]">
+          <h3 className="text-4xl md:text-5xl mt-4">${product.price}</h3>
+          <p className="text-xl md:text-2xl text-gray-300 py-4 lg:py-0 lg:max-w-[28rem] xl:max-w-[32rem] lg:mt-6">
             {product.description
               ? (() => {
                   const words = product.description.split(" ");
@@ -336,18 +336,19 @@ const ProductSlider = () => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <button
-            onClick={handleBuyNow}
-            className="mt-6 px-8 py-2 text-xl bg-white text-black rounded-full hover:bg-gray-200 transition"
-          >
-            Buy Now
-          </button>
-          <button
-            onClick={handleAddToCart}
-            className="mt-6 px-8 py-2 text-xl bg-white text-black rounded-full hover:bg-gray-200 transition"
-          >
-            Add to Cart
-          </button>
+<button
+  onClick={handleBuyNow}
+  className="mt-6 px-4 sm:px-6 xl:px-8 py-2 text-base md:text-lg xl:text-xl bg-white text-black rounded-full hover:bg-gray-200 transition"
+>
+  Buy Now
+</button>
+
+<button
+  onClick={handleAddToCart}
+  className="mt-6 px-4 sm:px-6 xl:px-8 py-2 text-base md:text-lg xl:text-xl bg-white text-black rounded-full hover:bg-gray-200 transition"
+>
+  Add to Cart
+</button>
         </div>
       </div>
     </div>
