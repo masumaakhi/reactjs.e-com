@@ -9,8 +9,7 @@ import {
   collection,
   getDocs,
   deleteDoc,
-  doc,
-  updateDoc,
+  doc
 } from "firebase/firestore";
 import { MoreVertical } from "lucide-react";
 

@@ -16,7 +16,6 @@ const AllOrders = () => {
   const [orders, setOrders] = useState([]);
   const [menuOpenId, setMenuOpenId] = useState(null);
   const [statusMenuOpenId, setStatusMenuOpenId] = useState(null);
-  const [dropdownOpen, setDropdownOpen] = useState(null);
 
   const menuRef = useRef();
   const statusRef = useRef();

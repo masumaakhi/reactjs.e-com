@@ -165,7 +165,7 @@
 // export default ProductSlider;
 
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { useNavigate, useOutletContext } from "react-router-dom";
@@ -180,9 +180,14 @@ const ProductSlider = () => {
   const navigate = useNavigate();
   const { dispatch } = useCart();
   const auth = getAuth();
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   // 🟩 Accessing context from App.js
   const { index, setIndex, product, setProduct, imgRef } = useOutletContext();
+
+  useEffect(() => {
+  setIsImageLoaded(false); // image লোড হওয়ার আগে reset
+}, [index]);
 
   // 🟢 Fetch product data from Firebase
   useEffect(() => {
@@ -286,6 +291,7 @@ const ProductSlider = () => {
           src={product.image?.[0] || "/placeholder.jpg"}
           alt={product.name}
           crossOrigin="anonymous"
+           onLoad={() => setIsImageLoaded(true)} 
           className="imageshow mx-auto w-[500px] h-[600px] object-contain mb-6"
         />
       )}
@@ -309,7 +315,9 @@ const ProductSlider = () => {
       {/* PRICE + DESCRIPTION + BUTTONS */}
       <div
         key={`details-${imgKey}`}
-        className="animate-slide-up md:align-center lg:max-w-full lg:flex lg:justify-evenly px-5 lg:items-start lg:mt-[-11rem] lg:px-6"
+        className={`${
+    isImageLoaded ? "animate-slide-up" : ""
+  } md:align-center lg:max-w-full lg:flex lg:justify-evenly px-5 lg:items-start lg:mt-[-11rem] lg:px-6`}
       >
         <div className="lg:mr-[18rem]">
           <h3 className="text-5xl mt-4">${product.price}</h3>
