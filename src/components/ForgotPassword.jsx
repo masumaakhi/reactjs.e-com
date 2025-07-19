@@ -19,7 +19,7 @@ const ForgotPassword = () => {
     setServerMessage("");
 
     const actionCodeSettings = {
-      url: "http://localhost:3000/signin", // ✅ change this to your production domain
+      url: "https://reactjsecomer.netlify.app/signin", // ✅ change this to your production domain
       handleCodeInApp: false,
     };
 

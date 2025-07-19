@@ -10,6 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import { toast } from "react-toastify";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const Signup = () => {
@@ -67,11 +68,11 @@ const Signup = () => {
         role: "customer",
       });
 
-      alert("Google signup successful!");
+      toast.success("Google signup successful!");
       navigate("/");
     } catch (error) {
       console.error("Google Sign-In error:", error);
-      alert("Google signup failed: " + error.message);
+      toast.warning("Google signup failed: " + error.message);
     }
   };
 

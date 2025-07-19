@@ -5,6 +5,7 @@ import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider,
 import { useNavigate, Link } from "react-router-dom";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // React Icons for show/hide
 
 const SignIn = () => {
@@ -59,12 +60,13 @@ const SignIn = () => {
           email: user.email,
           role: "customer",
         });
-  
-        alert("Google signup successful!");
+        
+        toast.success("Google signin successful!");
+
         navigate("/");
       } catch (error) {
         console.error("Google Sign-In error:", error);
-        alert("Google signup failed: " + error.message);
+        toast.warning("Google signin failed: " + error.message);
       }
     };
   
