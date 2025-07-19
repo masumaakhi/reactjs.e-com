@@ -89,6 +89,8 @@ import Footer from "./components/Footer";
 import "./index.css";
 import { useState, useEffect, useRef } from "react";
 import ColorThief from "colorthief";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [index, setIndex] = useState(0);
@@ -143,6 +145,19 @@ function App() {
       {/* 🟦 Passing image ref and state via context */}
       <Outlet context={{ index, setIndex, product, setProduct, imgRef }} />
       <Footer />
+
+            <ToastContainer 
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }

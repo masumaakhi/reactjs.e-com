@@ -185,6 +185,27 @@ const ProductSlider = () => {
   // 🟩 Accessing context from App.js
   const { index, setIndex, product, setProduct, imgRef } = useOutletContext();
 
+
+   // 🟡 Detect mobile touch or scroll → pause slider, resume after 10 sec
+  useEffect(() => {
+    let timeout;
+
+    const pauseSlider = () => {
+      setIsHovered(true);
+      clearTimeout(timeout);
+      timeout = setTimeout(() => setIsHovered(false), 2000); // resume after 10s
+    };
+
+    window.addEventListener("touchstart", pauseSlider);
+    window.addEventListener("scroll", pauseSlider);
+
+    return () => {
+      window.removeEventListener("touchstart", pauseSlider);
+      window.removeEventListener("scroll", pauseSlider);
+      clearTimeout(timeout);
+    };
+  }, []);
+
   useEffect(() => {
   setIsImageLoaded(false); // image লোড হওয়ার আগে reset
 }, [index]);
